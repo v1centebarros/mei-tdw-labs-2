@@ -1,12 +1,12 @@
-import styles from "./ex01.module.css";
-import {TodoForm} from "../../lib/components/ex01/TodoForm.jsx";
+import {TodoApp} from "../../lib/components/ex02/StyledComponents.js";
+import {TodoForm} from "../../lib/components/ex02/TodoForm.jsx";
 import {useEffect, useState} from "react";
-import {TodoListFilter} from "../../lib/components/ex01/TodoListFilter.jsx";
-import {TodoList} from "../../lib/components/ex01/TodoList.jsx";
-import {TodoSearchBar} from "../../lib/components/ex01/TodoSearchBar.jsx";
+import {TodoListFilter} from "../../lib/components/ex02/TodoListFilter.jsx";
+import {TodoList} from "../../lib/components/ex02/TodoList.jsx";
+import {TodoSearchBar} from "../../lib/components/ex02/TodoSearchBar.jsx";
 import localforage from "localforage";
 
-export function Ex01() {
+export function Ex02() {
     const [todos, setTodos] = useState([]);
     const [filter, setFilter] = useState("all");
     const [filteredTodos, setFilteredTodos] = useState(todos);
@@ -42,11 +42,11 @@ export function Ex01() {
     const searchTodos = (search) => setFilteredTodos(todos.filter(todo => todo.text.includes(search)));
 
     return (
-        <div className={styles.todoapp}>
+        <TodoApp>
             <TodoForm onSubmit={(todo) => setTodos([...todos, todo])}/>
             <TodoListFilter updateFilter={filterTodos}/>
             <TodoSearchBar searchTodos={searchTodos}/>
             <TodoList todos={filteredTodos} deleteTodo={deleteTodo} toggleTodo={toggleTodo}/>
-        </div>
+        </TodoApp>
     );
 }
